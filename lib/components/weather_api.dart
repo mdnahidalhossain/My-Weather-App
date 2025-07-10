@@ -1,11 +1,12 @@
 import 'package:flutter_weather_app/components/network.dart';
 //import 'package:weather_today_completed/services/network.dart';
-
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class GetWeatherByLocation {
+  String apiKey = dotenv.env['API_KEY']!;
   Future<dynamic> getByLocation(String location) async {
     final String weatherUrl =
-        "https://api.openweathermap.org/data/2.5/weather?q=$location&appid=5a18fc6e52dc7342ee016a20e95a106c&units=metric";
+        "https://api.openweathermap.org/data/2.5/weather?q=$location&appid=${apiKey}&units=metric";
     // NetworkHelper networkHelper = NetworkHelper('$weatherUrl');
     NetworkHelper networkHelper = NetworkHelper(weatherUrl);
 
